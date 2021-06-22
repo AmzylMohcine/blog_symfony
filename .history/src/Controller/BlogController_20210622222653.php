@@ -55,7 +55,7 @@ class BlogController extends AbstractController
 
         $form->handleRequest($request);
 
-
+        dump()
 
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setCreatedAt(new \DateTimeImmutable());

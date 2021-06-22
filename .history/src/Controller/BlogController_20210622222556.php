@@ -55,8 +55,6 @@ class BlogController extends AbstractController
 
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setCreatedAt(new \DateTimeImmutable());
 
@@ -65,6 +63,10 @@ class BlogController extends AbstractController
 
             return $this->redirectToRoute('blog_show', ['id' => $article->getId()]);
         }
+
+
+
+
 
         return $this->render('blog/create.html.twig', [
             'formArticle' => $form->createView() // create vienw cree un petit aspect d'affichage on va le passer a twig
