@@ -2,18 +2,15 @@
 
 {% block body %}
 
-<h1>  
+<h1>
+
 {% if editMode %}
-Modification de l'article 
+Enregistrer la modification 
 {%else%} 
- Creation d'un article 
+ Ajouter L'article  
  {%endif%}
  
-  </h1>
-
-
-
-
+Creation d'un article </h1>
 
 {{ form_start(formArticle)}}
 

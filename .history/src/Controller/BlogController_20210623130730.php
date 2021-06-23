@@ -50,13 +50,13 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
-        /*    $form = $this->createFormBuilder($article)
+      /*    $form = $this->createFormBuilder($article)
             ->add('title')
             ->add('content')
             ->add('image')
-            ->getform(); */
-
-        $form = $this->createForm(ArticleType::class, $article);
+            ->getform(); */ 
+ 
+            $form = $this->createForm(ArticleType::class)
 
         $form->handleRequest($request);
 

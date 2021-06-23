@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
-use App\Form\ArticleType;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -50,14 +50,12 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
-        /*    $form = $this->createFormBuilder($article)
+      /*    $form = $this->createFormBuilder($article)
             ->add('title')
             ->add('content')
             ->add('image')
-            ->getform(); */
-
-        $form = $this->createForm(ArticleType::class, $article);
-
+            ->getform();
+ 
         $form->handleRequest($request);
 
 

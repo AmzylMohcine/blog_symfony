@@ -56,7 +56,7 @@ class BlogController extends AbstractController
             ->add('image')
             ->getform(); */
 
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(ArticleType::class);
 
         $form->handleRequest($request);
 

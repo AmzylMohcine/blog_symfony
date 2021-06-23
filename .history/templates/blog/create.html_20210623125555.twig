@@ -2,18 +2,7 @@
 
 {% block body %}
 
-<h1>  
-{% if editMode %}
-Modification de l'article 
-{%else%} 
- Creation d'un article 
- {%endif%}
- 
-  </h1>
-
-
-
-
+<h1> Creation d'un article </h1>
 
 {{ form_start(formArticle)}}
 
@@ -25,11 +14,8 @@ Modification de l'article
 <br> 
 
 <button type="submit" class="btn btn-success">
-{% if editMode %}
-Enregistrer la modification 
-{%else%} 
+{% if editMode}
  Ajouter L'article  
- {%endif%}
  
  </button>
 
