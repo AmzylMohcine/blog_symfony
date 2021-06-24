@@ -8,16 +8,43 @@
 {% for article in articles %}
 <article> 
 <h2> {{article.title}}</h2> 
-<div class="metadata" > {{article.createdAt | date('d/m/Y')}} a  {{article.createdAt | date('H:m')}} Dans la categorie politique </div> 
+<div class="metadata" > {{article.createdAt | date('d/m/Y')}} a  {{article.createdAt | date('H:m')}} {{article.category.title}} </div> 
 <div class="content"> 
 <img src="{{article.image}}" alt=" " > 
 
 {{article.content | raw }} 
 
+<h1> Comments</h1>
+
+{%for comment in article.comments %} 
+
+<div class="comment"> 
+<div class="row" > 
+<div class="col-3"> 
+{{comment.author}} (<small> {{comment.createdAt | date('d/m/Y a H:i') }} </small>)
+
+</div>
+
+<div class="col" > 
+{{comment.content |raw }}
+</div>
+</div>
+</div>
+
+{%endfor %}
+
+
 <a href="{{ path('blog_show' , {'id' :article.id}) }}" class="btn btn-primary"> Lire la suite .. </a> 
+<a href="{{ path('blog_edit' , {'id' :article.id}) }}" class="btn btn-primary"> Modifier l'article </a>
 </div> 
 </article>
+
+
 {%endfor %}
+
+
+
+
 
 
 </section> 

@@ -11,19 +11,19 @@ Modification de l'article
  
   </h1>
 
-
-
-
-
 {{ form_start(formArticle)}}
 
 {{form_row(formArticle.title , { 'attr' : { 'placeholder':"titre de l'article" , 'class' : "form-control"}}) }}
 <br> 
+{{form_row(formArticle.category) }}
+<br> 
+
 {{form_row(formArticle.content , { 'attr' : { 'placeholder':"Contenu de l'article" , 'class' : "form-control"}}) }}
 <br> 
 {{form_row(formArticle.image , { 'attr' : { 'placeholder':"Image de l'article" , 'class' : "form-control"}}) }}
 <br> 
 
+  
 <button type="submit" class="btn btn-success">
 {% if editMode %}
 Enregistrer la modification 
@@ -33,6 +33,8 @@ Enregistrer la modification
  
  </button>
 
+
 {{ form_end(formArticle)}}
+
 
 {% endblock %}
