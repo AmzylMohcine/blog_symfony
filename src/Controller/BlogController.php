@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Entity\User;
 use App\Form\ArticleType;
 use App\Form\CommentType;
+use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\VarDumper\VarDumper;
@@ -78,7 +80,6 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/comment", name="blog_comment")
      */
-
     public function createComment(Comment $comment = null,  Request $request, EntityManagerInterface $manager)
     {
 
@@ -91,7 +92,6 @@ class BlogController extends AbstractController
             $comment->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($comment);
-
             $manager->flush();
 
             return $this->redirectToRoute('blog_show', ['id' => $comment->getArticle()->getId()]);
@@ -111,5 +111,22 @@ class BlogController extends AbstractController
         return $this->render('blog/show.html.twig', [
             'article' => $article,
         ]);
+    }
+    /**
+     * @Route("/inscription" , name= "blog_inscription")
+     */
+    public function register(Request $request, EntityManagerInterface $manager)
+    {
+
+        $user = new User();
+
+        $formRegister = $this->createForm(RegisterType::class, $user);
+
+        $formRegister->handleRequest($request);
+        
+
+        return $this->render('blog/register.html.twig' , [ 
+            'formRegister' => $formRegister->createView(); 
+                ]);
     }
 }
