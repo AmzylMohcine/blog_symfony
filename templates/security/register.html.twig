@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %} 
+
+{%block body %} 
+
+<h1> Inscription sur le site </h1>
+{{form_start(formRegister)}}
+
+{{form_row(formRegister.email , { 'attr' : { 'placeholder':"Email" , 'class' : "form-control"}}) }}
+<br> 
+{{form_row(formRegister.username , { 'attr' : { 'placeholder':"Username" , 'class' : "form-control"}})}}
+<br> 
+{{form_row(formRegister.password , { 'attr' : { 'placeholder':"Password" , 'class' : "form-control"}}) }}
+<br> 
+{{form_row(formRegister.confirm_password , { 'attr' : { 'placeholder':"confirm_Password" , 'class' : "form-control"}}) }}
+
+<br> 
+<button type="submit" class="btn btn-success"> S'enregistrer </button> 
+
+{{form_end(formRegister)}}
+
+{%endblock%}

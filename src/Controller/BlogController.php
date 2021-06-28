@@ -4,16 +4,14 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Entity\User;
 use App\Form\ArticleType;
 use App\Form\CommentType;
-use App\Form\RegisterType;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\VarDumper\VarDumper;
@@ -98,7 +96,7 @@ class BlogController extends AbstractController
         }
 
         return $this->render('blog/comment.html.twig', [
-            'formComment' => $formComment->createView(),
+            'formComment' => $formComment->createView()
         ]);
     }
     /**
@@ -111,22 +109,5 @@ class BlogController extends AbstractController
         return $this->render('blog/show.html.twig', [
             'article' => $article,
         ]);
-    }
-    /**
-     * @Route("/inscription" , name= "blog_inscription")
-     */
-    public function register(Request $request, EntityManagerInterface $manager)
-    {
-
-        $user = new User();
-
-        $formRegister = $this->createForm(RegisterType::class, $user);
-
-        $formRegister->handleRequest($request);
-        
-
-        return $this->render('blog/register.html.twig' , [ 
-            'formRegister' => $formRegister->createView(); 
-                ]);
     }
 }
