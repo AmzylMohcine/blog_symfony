@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<article> 
+
+<h2> {{article.title}} </h2> 
+
+<div class="metadata" > {{article.createdAt | date('d/m/Y')}} a  {{article.createdAt | date('H:m')}}  Dans {{article.category.title}} </div> 
+<div class="content"> 
+
+<img src=" {{article.image}}" alt=" " > 
+
+<hr>
+ {{article.content | raw}}
+ </hr> 
+</div> 
+
+</article>
+<section id="commentaire">
+<h1> {{article.comments | length }} Commentaires : </h1>
+{%for comment in article.comments %} 
+
+<div class="comment"> 
+<div class="row" > 
+<div class="col-3"> 
+{{comment.author}} (<small> {{comment.createdAt | date('d/m/Y a H:i') }} </small>)
+
+</div>
+
+<div class="col" > 
+{{comment.content |raw }}
+</div>
+
+
+</div>
+</div>
+
+{%endfor %}
+
+{{form_start(formComment)}}
+
+{{form_row(formComment.author, {'attr':'{}' })}}
+
+{{form_end(formComment)}}
+
+
+
+
+
+
+
+</section>
+
+
+{% endblock %}
